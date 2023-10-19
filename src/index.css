@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.circle{
+    margin-top: 5px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shortBio{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+}
+.likeDiv{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8px;
+    bottom: 25px;
+    gap: 5px;
+}
+.mainImgDiv{
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    margin: 5px;
+}
+.nav{
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+.banner{
+    background-image: url("https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&q=80&w=1513&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-position: bottom;
+}
+header{
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+.navSearch{
+    
+    
+}
+#logo{
+    font-family: 'Lobster', sans-serif;
+    font-size: 35px;
+}
+
+
+/************ PopUp css *************/
+
+.popup{
+    position: fixed;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 111111;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 98vh;
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.445);
+    
+}
+.buttonPopup{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    height: 35px;
+    width: 35px;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.644);
+}
+.imgDiv{
+    position: relative;
+    height: 70%;
+    overflow: hidden;
+}
+.imgDiv img{
+    object-fit:contain;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.imgBtn{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    /* background-color: rgba(0, 0, 0, 0.329); */
+    z-index: 11111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Ldiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 2vw;
+}
+.Ldiv div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    border-radius: 5px;
+    width: 80px;
+}
+.Rdiv{
+    background-color: rgba(16, 202, 16, 0.699);
+    width: 180px;
+    height: 45px;
+    margin-right: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: all .2s ease;
+    cursor: pointer;
+    
+}
+.Rdiv:hover{
+    background-color: rgb(16, 202, 16);
+}
+.tagDiv{
+    
+    height: 25%;
+    border-radius: 0 0 10px 10px;
+    padding-left: 1.5vw;
+}
+.tagDiv h3{
+    font-weight: 600;
+}
+
+.tags{
+    display: flex;
+    gap: 1vw;
+    margin-top: 3px;
+    flex-wrap: wrap;
+    
+}
+.tags div{
+   
+    padding: 5px 10px;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.295);
+    border-radius: 5px;
+}
