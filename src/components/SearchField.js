@@ -9,13 +9,13 @@ const SearchField = () => {
     setSearchValue(e.target.value);
   }
   const handleButtonSearch = () => {
-    fetchData(`search/photos?page=1&query=${searchValue}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
+    fetchData(`search/photos?page=1&per_page=30&query=${searchValue}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
     setSearchValue("");
     setSearchImage(searchValue);
   }
   const handleEnterSearch = e => {
-    if(e.key === 'Enter') {
-      fetchData(`search/photos?page=1&query=${searchValue}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
+    if (e.key === 'Enter') {
+      fetchData(`search/photos?page=1&per_page=30&query=${searchValue}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
       setSearchValue("");
       setSearchImage(searchValue);
     }
@@ -30,7 +30,7 @@ const SearchField = () => {
         value={searchValue}
         onChange={handleInputChange}
         onKeyDown={handleEnterSearch}
-        />
+      />
       <button
         onClick={handleButtonSearch}
         disabled={!searchValue}

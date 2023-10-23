@@ -1,56 +1,68 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { SlLike } from 'react-icons/sl';
-import { BsInstagram } from 'react-icons/bs'
-import { ImageContext } from "../App";
+import { BsInstagram } from 'react-icons/bs';
+import { ImageContext } from '../App';
 
-function Popup(props) {
+function Popup({ trigger, data, setTrigger }) {
   const { isDark } = useContext(ImageContext);
-  
-  return (props.trigger) ? (
-    <div className={isDark ? "popup drop-shadow-md bg-white dark:bg-neutral-800" :"popup drop-shadow-md bg-white"}>
-      <div className='imgDiv drop-shadow-md'>
-        <img className='' src={props.data.urls.full} alt={props.data.alt_description} />
 
-        <div class="imgBtn">
-          <div class="Ldiv">
+  if (!trigger) return null;
+
+  const { urls, alt_description, links, user, likes, tags } = data;
+
+  // Function to convert likes to 'k'
+  const formatLikes = (likeCount) => {
+    if (likeCount >= 1000) {
+      return `${(likeCount / 1000).toFixed(1)}k`;
+    }
+    return likeCount.toString();
+  };
+
+  return (
+    <div className={`popup drop-shadow-md bg-white ${isDark ? 'dark:bg-neutral-800' : ''}`}>
+      <div className="imgDiv drop-shadow-md">
+        <img src={urls.full} alt={alt_description} onLoad={() => console.log('Image loaded')} />
+
+        <div className="imgBtn">
+          <div className="Ldiv">
             <div>share</div>
             <div>info</div>
           </div>
-          <a href={props.data.links.download} target='blank' class="Rdiv text-lg">
+          <a href={links.download} target="_blank" rel="noreferrer" className="Rdiv text-lg">
             Download
           </a>
         </div>
-
       </div>
-      <div className="shortBio" style={{ position: "relative" }}>
+      <div className="shortBio" style={{ position: 'relative' }}>
         <div className="circle">
-          <img src={props.data.user.profile_image.medium} />
+          <img src={user.profile_image.medium} alt={user.name} />
         </div>
         <div>
-          <h4 className="font-semibold">{props.data.user.name}</h4>
-          <p className="font-thin"><BsInstagram style={{ display: "inline-block", marginRight: "5px" }} />{props.data.user.instagram_username}</p>
+          <h4 className="font-semibold">{user.name}</h4>
+          <p className="font-thin">
+            <BsInstagram style={{ display: 'inline-block', marginRight: '5px' }} />
+            {user.instagram_username}
+          </p>
         </div>
-        <div className='likeDiv' style={{ right: "4vw", bottom: "5vh" }}>
-          <SlLike style={{ fontSize: "20px" }} />
-          <h5>{props.data.likes}</h5>
+        <div className="likeDiv" style={{ right: '4vw', bottom: '5vh' }}>
+          <SlLike style={{ fontSize: '20px' }} />
+          <h5>{formatLikes(likes)}</h5>
         </div>
       </div>
-      <div className='tagDiv'>
+      <div className="tagDiv">
         <h3>Related Tags</h3>
-        <div className='tags'>
-          {props.data.tags.map((ele, index) => {
-            return (
-              <div key={index}>
-                {ele.title}
-              </div>
-            )
-          })}
+        <div className="tags">
+          {tags.map((tag, index) => (
+            <div key={`tag-${index}`}>{tag.title}</div>
+          ))}
         </div>
       </div>
 
-      <button className='buttonPopup' onClick={() => props.setTrigger(false)}>X</button>
+      <button className="buttonPopup" onClick={() => setTrigger(false)}>
+        X
+      </button>
     </div>
-  ) : "";
+  );
 }
 
-export default Popup
+export default Popup;
